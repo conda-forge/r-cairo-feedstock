@@ -40,6 +40,7 @@ cat << EOF | docker run -i \
                         -v "${RECIPE_ROOT}":/recipe_root \
                         -v "${FEEDSTOCK_ROOT}":/feedstock_root \
                         -e HOST_USER_ID="${HOST_USER_ID}" \
+                        -e CONDA_R="${CONDA_R}" \
                         -a stdin -a stdout -a stderr \
                         condaforge/linux-anvil \
                         bash || exit 1
@@ -65,12 +66,9 @@ source run_conda_forge_build_setup
 /usr/bin/sudo -n yum install -y libX11-devel libXt-devel
 
 
-# Embarking on 1 case(s).
-    set -x
-    export CONDA_R=3.3.2
-    set +x
-    conda build /recipe_root --quiet || exit 1
-    upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+conda build /recipe_root --quiet || exit 1
+upload_or_check_non_existence /recipe_root conda-forge --channel=main || exit 1
+
 touch /feedstock_root/build_artefacts/conda-forge-build-done
 EOF
 
