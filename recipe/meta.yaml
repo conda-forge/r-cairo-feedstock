@@ -17,7 +17,8 @@ source:
   sha256: 2a867b6cae96671d6bc3acf9334d6615dc01f6ecf1953a27cde8a43c724a38f4
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: True  # [win32]
 
 
@@ -28,16 +29,17 @@ build:
 
 requirements:
   build:
-    - r-base
     - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
     - pkg-config           # [unix]
-    - cairo 1.14.*
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
+    - r-base
+    - cairo
 
   run:
     - r-base
-    - cairo 1.14.*
+    - cairo
 
 test:
   commands:
