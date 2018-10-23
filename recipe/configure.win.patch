@@ -5,7 +5,7 @@
      else
  	echo "  unpacking current cairo"
 -	tar fxz src/cairo-current-win.tar.gz
-+	tar -xzf src/cairo-current-win.tar.gz
++	tar -xi -z -f src/cairo-current-win.tar.gz
  	if [ ! -e src/win64/libcairo.a ]; then
  	    allok=no
  	fi

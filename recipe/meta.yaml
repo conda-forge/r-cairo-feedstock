@@ -14,7 +14,7 @@ source:
     - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
   sha256: 2a867b6cae96671d6bc3acf9334d6615dc01f6ecf1953a27cde8a43c724a38f4
   patches:
-    - configure.win.patch  # [win]
+    - configure.win.patch
 
 build:
   merge_build_host: True  # [win]
