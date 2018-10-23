@@ -1,14 +1,10 @@
-cairo:
-- '1.14'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-m2w64_c_compiler:
-- m2w64-toolchain
+cran_mirror:
+- https://cran.r-project.org
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
   r-base:
     max_pin: x.x.x
 r_base:
