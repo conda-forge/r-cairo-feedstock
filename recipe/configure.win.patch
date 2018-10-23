@@ -1,6 +1,6 @@
 --- configure.win	2015-09-25 19:49:08.000000000 +0200
 +++ configure.win	2015-09-25 19:49:08.000000000 +0200
-@@ -8,15 +8,7 @@
+@@ -8,15 +8,8 @@
  	echo "  cannot find current cairograhics files"
  	echo "  attempting to download them"
  	echo 'download.file("http://www.rforge.net/Cairo/files/cairo-current-win.tar.gz","src/cairo-current-win.tar.gz",mode="wb")'|${R_HOME}/bin/R --vanilla --slave
@@ -14,6 +14,7 @@
 -	    allok=no
 -	fi
 +        echo 'untar("src/cairo-current-win.tar.gz", exdir="src/", compressed=TRUE)'|${R_HOME}/bin/R --vanilla --slave
++        ls src/
      fi
  fi
 
