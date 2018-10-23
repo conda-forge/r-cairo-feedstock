@@ -14,7 +14,6 @@
 -	    allok=no
 -	fi
 +        echo 'untar("src/cairo-current-win.tar.gz", exdir="./", compressed=TRUE)'|${R_HOME}/bin/R --vanilla --slave
-+        ls src/
      fi
  fi
 
