@@ -10,43 +10,48 @@ package:
 source:
   fn: Cairo_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/Cairo_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
-
-
+    - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
   sha256: 2a867b6cae96671d6bc3acf9334d6615dc01f6ecf1953a27cde8a43c724a38f4
+  patches:
+    - configure.win.patch
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-  skip: True  # [win32]
-
-
-
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
 
+# Suggests: png
 requirements:
   build:
-    - posix                # [win]
-    - pkg-config           # [unix]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+
   host:
     - r-base
-    - cairo
+    - cairo >=1.2
 
   run:
     - r-base
-    - cairo
+    - {{native}}gcc-libs         # [win]
+    - cairo >=1.2
 
 test:
   commands:
-    - $R -e "library('Cairo')"  # [not win]
+    - $R -e "library('Cairo')"           # [not win]
     - "\"%R%\" -e \"library('Cairo')\""  # [win]
-
-
 
 about:
   home: http://www.rforge.net/Cairo/
@@ -62,8 +67,13 @@ about:
     are modular such that any subset of backends is supported.
   license_family: GPL2
 
-
-
 extra:
   recipe-maintainers:
+    - dpryan79
     - croth1
+    - johanneskoester
+    - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
