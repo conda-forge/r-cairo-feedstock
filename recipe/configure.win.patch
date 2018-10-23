@@ -13,7 +13,7 @@
 -	if [ ! -e src/win64/libcairo.a ]; then
 -	    allok=no
 -	fi
-+        echo 'untar("src/cairo-current-win.tar.gz", exdir="src/", compressed=TRUE)'|${R_HOME}/bin/R --vanilla --slave
++        echo 'untar("src/cairo-current-win.tar.gz", exdir="./", compressed=TRUE)'|${R_HOME}/bin/R --vanilla --slave
 +        ls src/
      fi
  fi
