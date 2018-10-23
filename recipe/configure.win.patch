@@ -1,0 +1,11 @@
+--- configure.win	2015-09-25 19:49:08.000000000 +0200
++++ configure.win	2015-09-25 19:49:08.000000000 +0200
+@@ -13,7 +13,7 @@
+ 	allok=no
+     else
+ 	echo "  unpacking current cairo"
+-	tar fxz src/cairo-current-win.tar.gz
++	tar -xzf src/cairo-current-win.tar.gz
+ 	if [ ! -e src/win64/libcairo.a ]; then
+ 	    allok=no
+ 	fi
