@@ -18,7 +18,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 2
+  number: 1002
   rpaths:
     - lib/R/lib/
     - lib/
@@ -42,11 +42,13 @@ requirements:
   host:
     - r-base
     - cairo >=1.2
+    - xorg-libxt                 # [not win]
 
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
     - cairo >=1.2
+    - xorg-libxt                 # [not win]
 
 test:
   commands:
