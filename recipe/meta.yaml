@@ -53,7 +53,7 @@ test:
 
 about:
   home: http://www.rforge.net/Cairo/
-  license: GPL-2
+  license: GPL-2.0
   summary: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF),
     and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without
     the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and
