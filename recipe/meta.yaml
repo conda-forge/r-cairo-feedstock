@@ -1,4 +1,4 @@
-{% set version = "1.5-11" %}
+{% set version = "1.5-12" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
-  sha256: af23b16b05deae20d7b28e04cee1c256034e1c216337ff44378fd8f258bf33cd
+  sha256: 4e08eafb8c44045d16674ee5ae659f182ffe13ca86076fb077832947aa4a620b
   patches:
     - configure.win.patch
 
@@ -53,7 +53,7 @@ test:
 
 about:
   home: http://www.rforge.net/Cairo/
-  license: GPL-2
+  license: GPL-2.0
   summary: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF),
     and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without
     the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and
