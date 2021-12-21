@@ -1,4 +1,4 @@
-{% set version = "1.5-12.2" %}
+{% set version = "1.5-14" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
-  sha256: dd524105c83b82b5c3b3ee2583ef90d4cafa54b0c29817dac48b425b79f90f92
+  sha256: 067751face3b5771e72f9fb49bfeefb3a7bbecc060b672ab4393cb5935204c7b
   patches:
     - configure.win.patch
 
