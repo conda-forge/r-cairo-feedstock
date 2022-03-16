@@ -5,7 +5,7 @@ Home: http://www.rforge.net/Cairo/
 
 Package license: GPL-2.0
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cairo-feedstock/blob/master/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cairo-feedstock/blob/main/LICENSE.txt)
 
 Summary: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created without the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.
 
@@ -20,8 +20,8 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -29,57 +29,57 @@ Current build status
           <tbody><tr>
               <td>linux_64_r_base4.0</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=linux&configuration=linux_64_r_base4.0" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=linux&configuration=linux_64_r_base4.0" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_r_base4.1</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=linux&configuration=linux_64_r_base4.1" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=linux&configuration=linux_64_r_base4.1" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_r_base4.0</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=osx&configuration=osx_64_r_base4.0" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=osx&configuration=osx_64_r_base4.0" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_r_base4.1</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=osx&configuration=osx_64_r_base4.1" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=osx&configuration=osx_64_r_base4.1" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_r_base4.0</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_r_base4.0" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_r_base4.0" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_r_base4.1</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_r_base4.1" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_r_base4.1" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64_r_base4.0</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=win&configuration=win_64_r_base4.0" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=win&configuration=win_64_r_base4.0" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64_r_base4.1</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=master&jobName=win&configuration=win_64_r_base4.1" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=4169&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-cairo-feedstock?branchName=main&jobName=win&configuration=win_64_r_base4.1" alt="variant">
                 </a>
               </td>
             </tr>
