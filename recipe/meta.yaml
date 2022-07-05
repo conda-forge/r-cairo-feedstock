@@ -1,4 +1,4 @@
-{% set version = "1.5-15" %}
+{% set version = "1.6-0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
-  sha256: bb3ab1ff6431c15eb01a66ddf90695cd9a2af3d5a384753f5180cd0401d2e89d
+  sha256: c762ac1d8daa4af527342360c256ed742de4e3031d997e9e59c9a369fcafb7d3
   patches:
     - configure.win.patch
 
@@ -54,12 +54,13 @@ test:
 
 about:
   home: http://www.rforge.net/Cairo/
-  license: GPL-2.0
+  license: GPL-2.0-or-later
   summary: R graphics device using cairographics library that can be used to create high-quality vector (PDF, PostScript and SVG) and bitmap output (PNG,JPEG,TIFF), and high-quality rendering in displays (X11 and Win32). Since it uses the same back-end for all output, copying across formats is WYSIWYG. Files are created
     without the dependence on X11 or other external programs. This device supports alpha channel (semi-transparent drawing) and resulting images can contain transparent and semi-transparent regions. It is ideal for use in server environments (file output) and as a replacement for other devices that don't have Cairo's capabilities
     such as alpha support or anti-aliasing. Backends are modular such that any subset of backends is supported.
   license_family: GPL2
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
