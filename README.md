@@ -3,7 +3,7 @@ About r-cairo
 
 Home: http://www.rforge.net/Cairo/
 
-Package license: GPL-2.0
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cairo-feedstock/blob/main/LICENSE.txt)
 
