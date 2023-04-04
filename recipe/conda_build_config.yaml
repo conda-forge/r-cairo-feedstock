@@ -1,0 +1,9 @@
+r_base:
+  - 4.1
+  - 4.2            # [not win]
+libjpeg:
+  - jpeg
+  - libjpeg-turbo  # [not win]
+zip_keys:
+  - r_base
+  - libjpeg
