@@ -10,6 +10,8 @@ channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
+freetype:
+- '2'
 harfbuzz:
 - '6'
 icu:
