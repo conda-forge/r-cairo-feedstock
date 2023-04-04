@@ -1,35 +1,34 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '11'
-cdt_name:
-- cos6
+- '14'
+cairo:
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
 - '2'
 harfbuzz:
 - '6'
 icu:
 - '70'
-libjpeg:
-- jpeg
+libjpeg_turbo:
+- 2.1.5
 libtiff:
-- '4.4'
+- '4.5'
+macos_machine:
+- arm64-apple-darwin20.0.0
 pin_run_as_build:
   r-base:
     min_pin: x.x
     max_pin: x.x
 r_base:
-- '4.1'
+- '4.2'
 target_platform:
-- linux-64
-zip_keys:
-- - r_base
-  - libjpeg
+- osx-arm64

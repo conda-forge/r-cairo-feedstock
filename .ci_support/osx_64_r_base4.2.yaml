@@ -1,9 +1,11 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
+- '10.9'
 c_compiler:
 - clang
 c_compiler_version:
 - '14'
+cairo:
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -16,12 +18,12 @@ harfbuzz:
 - '6'
 icu:
 - '70'
-libjpeg:
-- libjpeg-turbo
+libjpeg_turbo:
+- 2.1.5
 libtiff:
-- '4.4'
+- '4.5'
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 pin_run_as_build:
   r-base:
     min_pin: x.x
@@ -29,7 +31,4 @@ pin_run_as_build:
 r_base:
 - '4.2'
 target_platform:
-- osx-arm64
-zip_keys:
-- - r_base
-  - libjpeg
+- osx-64
