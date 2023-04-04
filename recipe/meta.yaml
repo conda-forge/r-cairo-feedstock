@@ -53,8 +53,6 @@ requirements:
   run:
     - r-base {{ r_base }}
     - {{ native }}gcc-libs         # [win]
-    - freetype
-    - harfbuzz
 
 test:
   commands:
