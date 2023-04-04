@@ -38,22 +38,23 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base {{ r_base }}
+    - cairo
     - cairo >=1.2
     - freetype
     - harfbuzz
     - icu
-    - {{ libjpeg }}
+    {% if r_base == "4.1" %}
+    - jpeg 9
+    {% else %}
+    - libjpeg-turbo
+    {% endif %}
     - libtiff
     - xorg-libxt                   # [linux]
   run:
     - r-base {{ r_base }}
     - {{ native }}gcc-libs         # [win]
-    - cairo >=1.2
     - freetype
     - harfbuzz
-    - icu
-    - {{ libjpeg }}
-    - libtiff
     - xorg-libxt                   # [linux]
 
 test:
