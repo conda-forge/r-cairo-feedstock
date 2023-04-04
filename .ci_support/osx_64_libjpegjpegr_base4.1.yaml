@@ -10,8 +10,14 @@ channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
+harfbuzz:
+- '6'
+icu:
+- '70'
 libjpeg:
 - jpeg
+libtiff:
+- '4.4'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
