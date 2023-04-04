@@ -39,20 +39,22 @@ requirements:
   host:
     - r-base {{ r_base }}
     - cairo >=1.2
+    - freetype
     - harfbuzz
     - icu
     - {{ libjpeg }}
     - libtiff
-    - xorg-libxt                   # [not win]
+    - xorg-libxt                   # [linux]
   run:
     - r-base {{ r_base }}
     - {{ native }}gcc-libs         # [win]
     - cairo >=1.2
+    - freetype
     - harfbuzz
     - icu
     - {{ libjpeg }}
     - libtiff
-    - xorg-libxt                   # [not win]
+    - xorg-libxt                   # [linux]
 
 test:
   commands:
