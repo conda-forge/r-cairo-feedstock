@@ -49,13 +49,12 @@ requirements:
     - libjpeg-turbo
     {% endif %}
     - libtiff
-    - xorg-libxt                   # [linux]
+    - xorg-libx11                  # [linux]
   run:
     - r-base {{ r_base }}
     - {{ native }}gcc-libs         # [win]
     - freetype
     - harfbuzz
-    - xorg-libxt                   # [linux]
 
 test:
   commands:
