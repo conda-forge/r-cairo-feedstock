@@ -4,12 +4,24 @@ c_compiler:
 - clang
 c_compiler_version:
 - '14'
+cairo:
+- '1'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
+freetype:
+- '2'
+harfbuzz:
+- '6'
+icu:
+- '70'
+libjpeg_turbo:
+- 2.1.5
+libtiff:
+- '4.5'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
