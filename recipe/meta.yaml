@@ -16,7 +16,7 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 2
+  number: 3
   rpaths:
     - lib/R/lib/
     - lib/
@@ -43,11 +43,7 @@ requirements:
     - freetype
     - harfbuzz
     - icu
-    {% if r_base == "4.1" %}
-    - jpeg 9
-    {% else %}
     - libjpeg-turbo
-    {% endif %}
     - libtiff
     - xorg-libx11                  # [linux]
   run:
