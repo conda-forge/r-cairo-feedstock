@@ -15,7 +15,7 @@ icu:
 libjpeg_turbo:
 - 2.1.5
 libtiff:
-- '4.5'
+- '4.6'
 m2w64_c_compiler:
 - m2w64-toolchain
 pin_run_as_build:
