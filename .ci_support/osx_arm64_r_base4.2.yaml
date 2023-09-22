@@ -15,13 +15,13 @@ cran_mirror:
 freetype:
 - '2'
 harfbuzz:
-- '7'
+- '8'
 icu:
-- '72'
+- '73'
 libjpeg_turbo:
 - 2.1.5
 libtiff:
-- '4.5'
+- '4.6'
 macos_machine:
 - arm64-apple-darwin20.0.0
 pin_run_as_build:

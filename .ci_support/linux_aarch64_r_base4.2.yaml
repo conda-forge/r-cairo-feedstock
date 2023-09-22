@@ -21,13 +21,13 @@ docker_image:
 freetype:
 - '2'
 harfbuzz:
-- '7'
+- '8'
 icu:
-- '72'
+- '73'
 libjpeg_turbo:
 - 2.1.5
 libtiff:
-- '4.5'
+- '4.6'
 pin_run_as_build:
   r-base:
     min_pin: x.x
