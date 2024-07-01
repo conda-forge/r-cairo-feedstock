@@ -9,7 +9,7 @@ cran_mirror:
 freetype:
 - '2'
 harfbuzz:
-- '8'
+- '9'
 icu:
 - '73'
 libjpeg_turbo:
@@ -17,6 +17,8 @@ libjpeg_turbo:
 libtiff:
 - '4.6'
 m2w64_c_compiler:
+- m2w64-toolchain
+m2w64_c_stdlib:
 - m2w64-toolchain
 pin_run_as_build:
   r-base:
