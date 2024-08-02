@@ -9,7 +9,7 @@ cran_mirror:
 freetype:
 - '2'
 harfbuzz:
-- '8'
+- '9'
 icu:
 - '73'
 libjpeg_turbo:

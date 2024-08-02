@@ -17,11 +17,11 @@ channel_targets:
 cran_mirror:
 - https://cran.r-project.org
 docker_image:
-- quay.io/condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
 - '2'
 harfbuzz:
-- '8'
+- '9'
 icu:
 - '73'
 libjpeg_turbo:
