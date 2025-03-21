@@ -9,7 +9,7 @@ c_stdlib_version:
 cairo:
 - '1'
 cdt_name:
-- cos7
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -17,11 +17,11 @@ channel_targets:
 cran_mirror:
 - https://cran.r-project.org
 docker_image:
-- quay.io/condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-ppc64le:alma9
 freetype:
 - '2'
 harfbuzz:
-- '9'
+- '10'
 icu:
 - '75'
 libjpeg_turbo:
@@ -36,6 +36,3 @@ r_base:
 - '4.4'
 target_platform:
 - linux-ppc64le
-zip_keys:
-- - c_stdlib_version
-  - cdt_name
