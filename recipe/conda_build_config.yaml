@@ -1,0 +1,7 @@
+# Build against icu 73 and 75 until r-v8/libv8 support icu 75
+# https://conda-forge.org/status/migration/?name=icu75
+# https://github.com/conda-forge/libv8-feedstock/pull/85
+# https://github.com/conda-forge/r-v8-feedstock/issues/47
+icu:
+  - 73  # [linux64]
+  - 75
