@@ -254,4 +254,5 @@ Feedstock Maintainers
 
 * [@conda-forge/r](https://github.com/orgs/conda-forge/teams/r/)
 * [@croth1](https://github.com/croth1/)
+* [@jdblischak](https://github.com/jdblischak/)
 
