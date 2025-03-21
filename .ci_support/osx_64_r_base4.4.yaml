@@ -21,7 +21,7 @@ cran_mirror:
 freetype:
 - '2'
 harfbuzz:
-- '10'
+- '9'
 icu:
 - '75'
 libjpeg_turbo:

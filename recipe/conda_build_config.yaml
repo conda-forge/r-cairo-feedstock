@@ -5,3 +5,5 @@
 icu:
   - 73  # [linux64]
   - 75
+harfbuzz:
+  - 9

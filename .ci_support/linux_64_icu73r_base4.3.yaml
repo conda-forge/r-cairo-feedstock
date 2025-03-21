@@ -21,7 +21,7 @@ docker_image:
 freetype:
 - '2'
 harfbuzz:
-- '10'
+- '9'
 icu:
 - '73'
 libjpeg_turbo:
