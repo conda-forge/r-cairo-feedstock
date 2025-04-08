@@ -44,7 +44,13 @@ requirements:
     - icu
     - libjpeg-turbo
     - libtiff
-    - xorg-libx11                  # [linux]
+    - xorg-libice           # [linux]
+    - xorg-libsm            # [linux]
+    - xorg-libx11           # [linux]
+    - xorg-libxext          # [linux]
+    - xorg-libxrender       # [linux]
+    - xorg-xorgproto        # [linux]
+    # libs apparently needed for `pkg-config` to work
     - zlib
     - expat
     - glib
