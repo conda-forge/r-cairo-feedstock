@@ -31,7 +31,7 @@ requirements:
     - {{ posix }}autoconf
     - {{ posix }}automake          # [not win]
     - {{ posix }}automake-wrapper  # [win]
-    #- pkg-config
+    - pkg-config
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
@@ -46,6 +46,8 @@ requirements:
     - libtiff
     - xorg-libx11                  # [linux]
     - zlib
+    - expat
+    - glib
   run:
     - r-base {{ r_base }}
 
