@@ -45,6 +45,7 @@ requirements:
     - libjpeg-turbo
     - libtiff
     - xorg-libx11                  # [linux]
+    - zlib
   run:
     - r-base {{ r_base }}
 
