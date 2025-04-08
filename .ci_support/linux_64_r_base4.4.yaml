@@ -36,3 +36,5 @@ r_base:
 - '4.4'
 target_platform:
 - linux-64
+zlib:
+- '1'
