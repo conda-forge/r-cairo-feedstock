@@ -18,7 +18,11 @@ channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
+expat:
+- '2'
 freetype:
+- '2'
+glib:
 - '2'
 harfbuzz:
 - '11'

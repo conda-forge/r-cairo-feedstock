@@ -18,7 +18,11 @@ cran_mirror:
 - https://cran.r-project.org
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
+expat:
+- '2'
 freetype:
+- '2'
+glib:
 - '2'
 harfbuzz:
 - '11'
