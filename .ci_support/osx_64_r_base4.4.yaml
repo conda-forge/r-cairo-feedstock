@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -24,8 +24,6 @@ freetype:
 - '2'
 glib:
 - '2'
-harfbuzz:
-- '11'
 icu:
 - '75'
 libjpeg_turbo:
