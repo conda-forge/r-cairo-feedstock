@@ -1,4 +1,4 @@
-{% set version = "1.6-5" %}
+{% set version = "1.7-0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
-  sha256: 8778a2fd7c8b8b3167282e59c05c8d66892bea9e3b1b13abbb47b72c9d75892a
+  sha256: fcb84a614bbb85b976dd4fd1c17e2f7fd2f4fa21c3ac9e930819d88099a61d52
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
