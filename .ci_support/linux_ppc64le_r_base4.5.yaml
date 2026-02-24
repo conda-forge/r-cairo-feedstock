@@ -23,7 +23,7 @@ freetype:
 glib:
 - '2'
 icu:
-- '75'
+- '78'
 libjpeg_turbo:
 - '3'
 libtiff:
