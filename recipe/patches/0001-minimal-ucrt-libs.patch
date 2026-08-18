@@ -1,0 +1,44 @@
+From 3c687dac4572ebbf829d257233d39951b95d45e1 Mon Sep 17 00:00:00 2001
+From: Daniel Nachun <daniel.nachun@gmail.com>
+Date: Sat, 26 Oct 2024 20:59:08 -0700
+Subject: [PATCH] minimal ucrt libs
+
+---
+ src/Makevars.ucrt | 27 ++-------------------------
+ 1 file changed, 2 insertions(+), 25 deletions(-)
+
+diff --git a/src/Makevars.ucrt b/src/Makevars.ucrt
+index 8ff3402..6e915e5 100644
+--- a/src/Makevars.ucrt
++++ b/src/Makevars.ucrt
+@@ -1,25 +1,2 @@
+-ifdef DEBUG
+-  XTRA_PKG_CPPFLAGS=-DJGD_DEBUG
+-endif
+-
+-ifeq "$(WIN)" "64"
+-BITS=64
+-else
+-BITS=32
+-endif
+-
+-PKG_CPPFLAGS = -I.
+-
+-ifeq (,$(shell pkg-config --version 2>/dev/null))
+-  PKG_CPPFLAGS += -I$(LOCAL_SOFT)/include/cairo -I$(LOCAL_SOFT)/include/freetype2
+-  LIBSHARPYUV = $(or $(and $(wildcard $(R_TOOLS_SOFT)/lib/libsharpyuv.a),-lsharpyuv),)
+-  PKG_LIBS += -lcairo -lfontconfig -lintl -liconv -lexpat -lfreetype -lharfbuzz \
+-              -lpixman-1 -ltiff -lwebp $(LIBSHARPYUV) -llzma -lzstd -ljpeg -lpng -lbz2 \
+-              -lz -lgdi32 -lmsimg32
+-else
+-  PKG_CPPFLAGS += $(shell pkg-config --cflags cairo libtiff-4 libjpeg)
+-  PKG_LIBS += $(shell pkg-config --libs cairo libtiff-4 libjpeg)
+-endif
+-
+-PKG_LIBS += $(GRAPHAPP_LIB)
+-PKG_CPPFLAGS += $(XTRA_PKG_CPPFLAGS)
++PKG_CPPFLAGS = -I$(subst \,/,$(LIBRARY_INC))/cairo
++PKG_LIBS = $(GRAPHAPP_LIB) -lcairo -lgdi32 -ljpeg -ltiff
+-- 
+2.47.0
+
