@@ -1,0 +1,171 @@
+From f6712b10f53876103bc6e0ea5a2d31f104b1c45a Mon Sep 17 00:00:00 2001
+From: Daniel Nachun <daniel.nachun@gmail.com>
+Date: Mon, 17 Aug 2026 23:54:21 -0700
+Subject: [PATCH] rename shared library to RCairo to avoid Windows DLL name
+ clash
+
+The package's own compiled library is named Cairo.dll on Windows, which
+collides with conda-forge's cairo.dll (Windows matches module base names
+case-insensitively). The loader then binds the package DLL's import of
+cairo.dll to the package DLL itself, so cairo's exports are never found
+and loading fails with 'LoadLibrary failure: The specified procedure
+could not be found'.
+
+Install the package's library as RCairo instead, via the documented
+src/install.libs.R hook, and update the three coupled names: the
+library.dynam() chname, the PACKAGE= argument of every .Call/.External
+(R_FindSymbol matches PACKAGE= against the loaded DLL's base name), and
+the registration entry point R_init_Cairo -> R_init_RCairo (R derives
+that symbol from the DLL base name).
+---
+ R/Cairo.R          | 20 ++++++++++----------
+ R/imgtools.R       |  6 +++---
+ R/zzz.R            |  4 ++--
+ src/cairotalk.c    |  2 +-
+ src/install.libs.R | 26 ++++++++++++++++++++++++++
+ 5 files changed, 42 insertions(+), 16 deletions(-)
+ create mode 100644 src/install.libs.R
+
+diff --git a/R/Cairo.R b/R/Cairo.R
+index 7480e93..8219ef7 100644
+--- a/R/Cairo.R
++++ b/R/Cairo.R
+@@ -32,14 +32,14 @@ Cairo <- function(width=640, height=480, file="", type="png", pointsize=12, bg="
+ 	dpi <- as.double(dpi)
+ 	## unit multiplier: >0 mpl to get inches, <0 mpl to get device pixels
+ 	umpl <- as.double(c(-1, 1/72, 1, 1/2.54, 1/25.4)[units==c("px","pt","in","cm","mm")])
+-	gdn<-.External("cairo_create_new_device", as.character(ctype), file, width, height, pointsize, bg, canvas, umpl, dpi, ..., PACKAGE="Cairo")
++	gdn<-.External("cairo_create_new_device", as.character(ctype), file, width, height, pointsize, bg, canvas, umpl, dpi, ..., PACKAGE="RCairo")
+ 	par(bg=bg)
+ 	invisible(structure(gdn,class=c("Cairo",paste("Cairo",toupper(ctype),sep='')),type=as.character(ctype),file=file))
+ }
+ 
+ Cairo.capabilities <- function() {
+     ust <- c(unique(.supported.types), "freetype", "harfbuzz")
+-    cap <- !is.na(match(ust, .Call("Rcairo_supported_types", PACKAGE="Cairo")))
++    cap <- !is.na(match(ust, .Call("Rcairo_supported_types", PACKAGE="RCairo")))
+     names(cap) <- ust
+     cap
+ }
+@@ -56,7 +56,7 @@ CairoFontMatch <- function(fontpattern="Helvetica",sort=FALSE,verbose=FALSE) {
+ 	if (typeof(verbose) != "logical")
+ 		stop("verbose option must be a logical")
+ 
+-	invisible(.External("cairo_font_match",fontpattern,sort,verbose,PACKAGE="Cairo"))
++	invisible(.External("cairo_font_match",fontpattern,sort,verbose,PACKAGE="RCairo"))
+ }
+ 
+ CairoFonts <- function(
+@@ -76,7 +76,7 @@ CairoFonts <- function(
+ 	if (!is.null(symbol) && typeof(symbol) != "character")
+ 		stop("symbol option must be a character vector of length 1")
+ 	invisible(.External("cairo_font_set", regular, bold, italic, bolditalic,
+-		symbol, usePUA, PACKAGE="Cairo"))
++		symbol, usePUA, PACKAGE="RCairo"))
+ }
+ 
+ 
+@@ -146,17 +146,17 @@ CairoWin <- function(width = 7, height = 7, pointsize = 12,
+ 	Cairo(width, height, '', 'win', pointsize=pointsize, bg=bg, units="in", ...)
+ }
+ 
+-Cairo.serial <- function(device = dev.cur()) .Call("Cairo_get_serial", device, PACKAGE="Cairo")
++Cairo.serial <- function(device = dev.cur()) .Call("Cairo_get_serial", device, PACKAGE="RCairo")
+ 
+-Cairo.onSave <- function(device = dev.cur(), onSave) .Call("Cairo_set_onSave", device, onSave, PACKAGE="Cairo")
++Cairo.onSave <- function(device = dev.cur(), onSave) .Call("Cairo_set_onSave", device, onSave, PACKAGE="RCairo")
+ 
+-Cairo.capture <- function(device = dev.cur()) .Call("Rcairo_capture", device, PACKAGE="Cairo")
++Cairo.capture <- function(device = dev.cur()) .Call("Rcairo_capture", device, PACKAGE="RCairo")
+ 
+ Cairo.snapshot <- function(device = dev.cur(), last=FALSE) {
+     res <- if (is.na(last)) {
+-        res <- .Call("Rcairo_snapshot", device, FALSE, PACKAGE="Cairo")
+-        if (is.null(res[[1]])) .Call("Rcairo_snapshot", device, TRUE, PACKAGE="Cairo") else res
+-    } else .Call("Rcairo_snapshot", device, last, PACKAGE="Cairo")
++        res <- .Call("Rcairo_snapshot", device, FALSE, PACKAGE="RCairo")
++        if (is.null(res[[1]])) .Call("Rcairo_snapshot", device, TRUE, PACKAGE="RCairo") else res
++    } else .Call("Rcairo_snapshot", device, last, PACKAGE="RCairo")
+     attr(res, "pid") <- Sys.getpid()
+     class(res) <- "recordedplot"
+     res
+diff --git a/R/imgtools.R b/R/imgtools.R
+index 92352c8..4f1c716 100644
+--- a/R/imgtools.R
++++ b/R/imgtools.R
+@@ -1,5 +1,5 @@
+ .image <- function(device) {
+-    a <- .Call("get_img_backplane", device, PACKAGE="Cairo")
++    a <- .Call("get_img_backplane", device, PACKAGE="RCairo")
+     names(a) <- c('ref', 'info')
+     a$width <- a[[2]][1]
+     a$height <- a[[2]][2]
+@@ -9,8 +9,8 @@
+ }
+ 
+ .ptr.to.raw <- function(ptr, begin, length)
+-    .Call("ptr_to_raw", ptr, begin, length, PACKAGE="Cairo")
++    .Call("ptr_to_raw", ptr, begin, length, PACKAGE="RCairo")
+ 
+ .raw.to.ptr <- function(ptr, offset=0, raw, begin=0, length=length(raw))
+-    invisible(.Call("raw_to_ptr", ptr, offset, raw, begin, length, PACKAGE="Cairo"))
++    invisible(.Call("raw_to_ptr", ptr, offset, raw, begin, length, PACKAGE="RCairo"))
+ 
+diff --git a/R/zzz.R b/R/zzz.R
+index 36723a8..40a9a73 100644
+--- a/R/zzz.R
++++ b/R/zzz.R
+@@ -5,6 +5,6 @@
+         cp<-strsplit(Sys.getenv("PATH"),";")
+         if (! lp %in% cp) Sys.setenv(PATH=paste(lp,Sys.getenv("PATH"),sep=";"))
+     }
+-    library.dynam("Cairo", pkgname, libname)
+-    .Call("Rcairo_initialize", PACKAGE="Cairo")
++    library.dynam("RCairo", pkgname, libname)
++    .Call("Rcairo_initialize", PACKAGE="RCairo")
+ }
+diff --git a/src/cairotalk.c b/src/cairotalk.c
+index 7dde22c..3ccd7e9 100644
+--- a/src/cairotalk.c
++++ b/src/cairotalk.c
+@@ -1835,7 +1835,7 @@ static const R_ExternalMethodDef externalMethods[] = {
+     {NULL, NULL, 0}
+ };
+ 
+-void attribute_visible R_init_Cairo(DllInfo *dll) {
++void attribute_visible R_init_RCairo(DllInfo *dll) {
+ 	R_registerRoutines(dll, 0, callMethods, 0, externalMethods);
+     R_useDynamicSymbols(dll, FALSE);
+     /* R_forceSymbols(dll, TRUE); */
+diff --git a/src/install.libs.R b/src/install.libs.R
+new file mode 100644
+index 0000000..d2d5e8c
+--- /dev/null
++++ b/src/install.libs.R
+@@ -0,0 +1,26 @@
++# Install the compiled package library under the name "RCairo" instead of
++# "Cairo", to avoid a Windows DLL base-name clash with the external cairo
++# library (shipped by conda-forge as Library/bin/cairo.dll). Windows matches
++# module names case-insensitively, so a package DLL named Cairo.dll satisfies
++# its own import of cairo.dll and the real cairo exports are never found
++# ("LoadLibrary failure: The specified procedure could not be found").
++# Matching names live in library.dynam("RCairo", ...) / PACKAGE="RCairo" in
++# R/*.R and in R_init_RCairo() in src/cairotalk.c.
++#
++# Mirrors tools:::.install_packages() default logic (glob built shared objects,
++# copy into libs[/arch]), renaming only the main library.
++
++files <- Sys.glob(paste0("*", SHLIB_EXT))
++
++dest <- file.path(R_PACKAGE_DIR, paste0("libs", R_ARCH))
++dir.create(dest, recursive = TRUE, showWarnings = FALSE)
++
++main <- paste0(R_PACKAGE_NAME, SHLIB_EXT)          # Cairo.dll / Cairo.so
++for (f in files) {
++  target <- if (identical(f, main)) paste0("R", main) else f
++  file.copy(f, file.path(dest, target), overwrite = TRUE)
++}
++
++if (file.exists("symbols.rds")) {
++  file.copy("symbols.rds", dest, overwrite = TRUE)
++}

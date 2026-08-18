@@ -3,20 +3,26 @@
 
 package:
   name: r-cairo
-  version: {{ version|replace("-", "_") }}
+  version: "{{ version|replace("-", "_") }}"
 
 source:
   url:
     - {{ cran_mirror }}/src/contrib/Cairo_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cairo/Cairo_{{ version }}.tar.gz
   sha256: fcb84a614bbb85b976dd4fd1c17e2f7fd2f4fa21c3ac9e930819d88099a61d52
+  patches:
+    - patches/0001-minimal-ucrt-libs.patch
+    - patches/0002-rename-shared-library-to-RCairo-to-avoid-Windows-DLL.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: true  # [win]
+  missing_dso_whitelist:
+    - '*/R.dll'           # [win]
+    - '*/Rblas.dll'       # [win]
+    - '*/Rlapack.dll'     # [win]
 
 requirements:
   build:
@@ -38,15 +44,12 @@ requirements:
   host:
     - r-base {{ r_base }}
     - cairo
-    - cairo >=1.2
-    - freetype
-    - harfbuzz
-    - icu
+    - freetype                     # [not win]
+    - harfbuzz                     # [not win]
+    - icu                          # [not win]
     - libjpeg-turbo
     - libtiff
     - xorg-libx11                  # [linux]
-    # following libs apparently needed for `pkg-config` to work
-    # see: https://github.com/conda-forge/cairo-feedstock/blob/f8c271627e0d7bd3f0238ec5a760b254a4e0877e/recipe/meta.yaml#L49
     - expat
     - glib
     - xorg-xorgproto               # [linux]
