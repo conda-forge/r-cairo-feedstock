@@ -44,10 +44,9 @@ requirements:
   host:
     - r-base {{ r_base }}
     - cairo
-    - cairo >=1.2
-    - freetype
-    - harfbuzz
-    - icu
+    - freetype                     # [not win]
+    - harfbuzz                     # [not win]
+    - icu                          # [not win]
     - libjpeg-turbo
     - libtiff
     - xorg-libx11                  # [linux]
